@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.kebob.geta.data.Meal
+import com.kebob.geta.data.MealData
 
-class TimeListAdapter(private val dataSet: Array<Meal>)
-    : RecyclerView.Adapter<TimeListAdapter.ViewHolder>() {
+class TimeListAdapter(private val dataSet: Array<MealData>) :
+    RecyclerView.Adapter<TimeListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvMeal: TextView = view.findViewById(R.id.tv_meal)

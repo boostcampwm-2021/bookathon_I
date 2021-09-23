@@ -5,7 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kebob.geta.data.Meal
+import com.kebob.geta.data.MealData
 import com.kebob.geta.databinding.ActivityTimeListBinding
 
 class TimeListActivity : AppCompatActivity() {
@@ -21,9 +21,9 @@ class TimeListActivity : AppCompatActivity() {
         setActionBar()
 
         val array = arrayOf(
-            Meal("아침", "9:00", "11:00", "엄마", ""),
-            Meal("점심", "9:00", "11:00", "엄마", ""),
-            Meal("저녁", "9:00", "11:00", "엄마", "")
+            MealData("아침", "9:00", "11:00", "엄마", ""),
+            MealData("점심", "9:00", "11:00", "엄마", ""),
+            MealData("저녁", "9:00", "11:00", "엄마", "")
         )
         val adapter = TimeListAdapter(array)
 

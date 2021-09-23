@@ -7,7 +7,7 @@ data class Meal(
     val mealType: String,
     val startTime: String,
     val endTime: String,
-    val person: String?,
-    val time: String?,
+    var person: String?,
+    var time: String?,
     val profile: Bitmap?
 )
