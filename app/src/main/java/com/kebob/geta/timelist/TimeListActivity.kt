@@ -1,4 +1,4 @@
-package com.kebob.geta
+package com.kebob.geta.timelist
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,9 @@ import android.view.View
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kebob.geta.CustomActionBar
+import com.kebob.geta.R
+import com.kebob.geta.RegisterActivity
 import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ActivityTimeListBinding
 
