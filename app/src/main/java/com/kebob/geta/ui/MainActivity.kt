@@ -3,6 +3,7 @@ package com.kebob.geta.ui
 import android.animation.Animator
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -35,6 +36,9 @@ class MainActivity : AppCompatActivity() {
     private val database = Firebase.database
     private val databaseReference = database.reference
 
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var userName : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
@@ -54,6 +58,9 @@ class MainActivity : AppCompatActivity() {
             override fun onAnimationCancel(animation: Animator?) {}
             override fun onAnimationRepeat(animation: Animator?) {}
         })
+
+        sharedPreferences = getSharedPreferences(UserRegisterActivity.login, MODE_PRIVATE)
+        userName = sharedPreferences.getString(UserRegisterActivity.userN,"default").toString()
 
         mealList = intent.getSerializableExtra("meals") as MutableList<Meal>
 

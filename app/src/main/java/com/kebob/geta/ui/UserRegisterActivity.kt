@@ -113,6 +113,7 @@ class UserRegisterActivity : AppCompatActivity() {
                     try {
                         database.child("users").child(userName).setValue(userUrl)
                         preferenceEditor.putBoolean(u, true)
+                        preferenceEditor.putString(userN, userName)
                         preferenceEditor.apply()
                         val intent = Intent(this@UserRegisterActivity, MainActivity::class.java)
                         intent.putExtra("meals", mealList as ArrayList)
@@ -131,6 +132,7 @@ class UserRegisterActivity : AppCompatActivity() {
     companion object {
         const val login = "login"
         const val u = "user"
+        const val userN = "userName"
     }
 
     private fun hideKeyBoard() {
