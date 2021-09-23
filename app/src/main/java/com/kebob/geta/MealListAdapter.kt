@@ -22,24 +22,25 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
             binding.tvMealTitle.text = meal.title
             binding.tvMealTime.text = meal.time
             binding.tvMealPerson.text = meal.person
-            // Glide 사용해서 image도 불러오기
+            // TODO: Glide 사용해서 image도 불러오기
 
-            binding.layoutItemMealChecked.setOnClickListener {
+            binding.layoutItemMeal.setOnClickListener {
                 onItemClickListener.onItemClick(it, position)
             }
             when (meal.type) {
                 Meal.CHECKED -> {
-                    binding.tvMealTitle.visibility = View.VISIBLE
+                    binding.layoutItemMeal.setBackgroundResource(R.drawable.bg_item_meal_checked)
                     binding.tvMealPerson.visibility = View.VISIBLE
                     binding.tvMealTime.visibility = View.VISIBLE
-                    binding.tvMealPerson.visibility = View.VISIBLE
-                    binding.tvMealDay.visibility = View.VISIBLE
+                    binding.ivMealProfile.visibility = View.VISIBLE
+                    // binding.tvMealDay.visibility = View.VISIBLE
                 }
                 Meal.UNCHECKED -> {
+                    binding.layoutItemMeal.setBackgroundResource(R.drawable.bg_item_meal_unchecked)
                     binding.tvMealPerson.visibility = View.GONE
                     binding.tvMealTime.visibility = View.GONE
-                    binding.tvMealPerson.visibility = View.GONE
                     binding.tvMealDay.visibility = View.GONE
+                    binding.ivMealProfile.visibility = View.GONE
                 }
             }
         }
