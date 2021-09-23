@@ -1,6 +1,7 @@
 package com.kebob.geta
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.kebob.geta.databinding.ActivityTimeListBinding
@@ -26,8 +27,14 @@ class TimeListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> onBackPressed()
+            R.id.menu_delete_time -> TODO("delete item")
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_time_list, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     private fun setActionBar() {
@@ -37,7 +44,7 @@ class TimeListActivity : AppCompatActivity() {
 
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
-            it.title = "급식 시간 추가"
+            it.title = "급식 시간 관리"
         }
     }
 }

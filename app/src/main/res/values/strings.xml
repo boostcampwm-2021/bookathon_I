@@ -6,4 +6,5 @@
     <string name="tv_meal_start_time">시작 시간</string>
     <string name="tv_meal_end_time">끝 시간</string>
     <string name="tv_select_time">시간을 선택해주세요</string>
+    <string name="delete">삭제</string>
 </resources>
