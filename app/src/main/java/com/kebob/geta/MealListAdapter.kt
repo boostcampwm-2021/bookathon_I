@@ -5,63 +5,55 @@ import android.graphics.drawable.shapes.Shape
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.kebob.geta.databinding.ItemMealCheckedBinding
-import com.kebob.geta.databinding.ItemMealUncheckedBinding
+import com.kebob.geta.databinding.ItemMealBinding
 import java.lang.RuntimeException
 
-class MealListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
     private lateinit var mealList: List<Meal>
     private lateinit var onItemClickListener: OnItemClickListener
 
-    inner class MealCheckedViewHolder(private val binding: ItemMealCheckedBinding) :
+    inner class MealViewHolder(private val binding: ItemMealBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(meal: Meal) {
-            binding.tvMealCheckedTitle.text = meal.title
-            binding.tvItemCheckedTime.text = meal.time
-            binding.tvMealCheckedPerson.text = meal.person
+            binding.tvMealTitle.text = meal.title
+            binding.tvMealTime.text = meal.time
+            binding.tvMealPerson.text = meal.person
             // Glide 사용해서 image도 불러오기
 
             binding.layoutItemMealChecked.setOnClickListener {
                 onItemClickListener.onItemClick(it, position)
             }
+            when (meal.type) {
+                Meal.CHECKED -> {
+                    binding.tvMealTitle.visibility = View.VISIBLE
+                    binding.tvMealPerson.visibility = View.VISIBLE
+                    binding.tvMealTime.visibility = View.VISIBLE
+                    binding.tvMealPerson.visibility = View.VISIBLE
+                    binding.tvMealDay.visibility = View.VISIBLE
+                }
+                Meal.UNCHECKED -> {
+                    binding.tvMealPerson.visibility = View.GONE
+                    binding.tvMealTime.visibility = View.GONE
+                    binding.tvMealPerson.visibility = View.GONE
+                    binding.tvMealDay.visibility = View.GONE
+                }
+            }
         }
     }
 
-    inner class MealUncheckedViewHolder(private val binding: ItemMealUncheckedBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(meal: Meal) {
-            binding.tvMealUncheckedTitle.text = meal.title
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return when (viewType) {
-            Meal.CHECKED -> {
-                val binding = ItemMealCheckedBinding.inflate(layoutInflater, parent, false)
-                return MealCheckedViewHolder(binding)
-            }
-            Meal.UNCHECKED -> {
-                val binding = ItemMealUncheckedBinding.inflate(layoutInflater, parent, false)
-                return MealUncheckedViewHolder(binding)
-            }
-            else -> throw RuntimeException("알 수 없는 뷰 타입 에러")
-        }
+        val binding = ItemMealBinding.inflate(layoutInflater, parent, false)
+        return MealViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (mealList[position].type) {
-            Meal.CHECKED -> {
-                (holder as MealListAdapter.MealCheckedViewHolder).bind(mealList[position])
-                holder.setIsRecyclable(false)
-            }
-            Meal.UNCHECKED -> {
-                (holder as MealUncheckedViewHolder).bind(mealList[position])
-                holder.setIsRecyclable(false)
-            }
-        }
+    override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
+        holder.bind(mealList[position])
+        holder.setIsRecyclable(false)
     }
 
     override fun getItemCount(): Int {

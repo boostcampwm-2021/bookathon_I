@@ -14,7 +14,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mLayoutManager: LinearLayoutManager
 
     private var mealList = mutableListOf(
-        Meal(Meal.CHECKED, "아침", "엄마", "Mon 13:00", null)
+        Meal(Meal.CHECKED, "아침", "엄마", "Mon 13:00", null),
+        Meal(Meal.UNCHECKED, "저녁", "아들1", "Mon 18:00", null)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +37,16 @@ class MainActivity : AppCompatActivity() {
         mealListAdapter.setOnItemClickListener(object : MealListAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 // Firebase data 수정하기
-
+                updateData(position)
                 mealListAdapter.updateList(mealList)
             }
         })
+    }
+
+    private fun updateData(position: Int) {
+        when (mealList[position].type) {
+            Meal.CHECKED -> mealList[position].type = Meal.UNCHECKED
+            Meal.UNCHECKED -> mealList[position].type = Meal.CHECKED
+        }
     }
 }

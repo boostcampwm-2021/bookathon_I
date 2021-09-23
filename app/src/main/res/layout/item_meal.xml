@@ -5,10 +5,10 @@
     android:id="@+id/layout_item_meal_checked"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:background="@drawable/bg_item_meal_checked">
+    android:background="@drawable/bg_item_meal_unchecked">
 
     <TextView
-        android:id="@+id/tv_meal_checked_title"
+        android:id="@+id/tv_meal_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="아침"
@@ -21,19 +21,18 @@
         app:layout_constraintVertical_bias="0.474" />
 
     <TextView
-        android:id="@+id/tv_meal_checked_person"
+        android:id="@+id/tv_meal_person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="272dp"
+        android:layout_marginTop="36dp"
         android:text="엄마"
         android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_item_checked_day"
+        android:id="@+id/tv_meal_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -41,13 +40,13 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="0.733"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_meal_checked_person"
+        app:layout_constraintTop_toBottomOf="@+id/tv_meal_person"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_item_checked_time"
+        android:id="@+id/tv_meal_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -55,8 +54,20 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toEndOf="@+id/tv_item_checked_day"
-        app:layout_constraintTop_toBottomOf="@+id/tv_meal_checked_person"
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintStart_toEndOf="@+id/tv_meal_day"
+        app:layout_constraintTop_toBottomOf="@+id/tv_meal_person"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/iv_meal_profile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_meal_person"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
