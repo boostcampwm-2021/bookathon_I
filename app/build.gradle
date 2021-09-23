@@ -7,6 +7,10 @@ plugins {
 android {
     compileSdk 30
 
+    viewBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.kebob.geta"
         minSdk 21
@@ -44,4 +48,5 @@ dependencies {
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-database-ktx'
 }
