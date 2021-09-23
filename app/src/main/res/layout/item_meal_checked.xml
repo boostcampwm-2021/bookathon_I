@@ -5,8 +5,6 @@
     android:id="@+id/layout_item_meal_checked"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:layout_marginStart="40dp"
-    android:layout_marginEnd="40dp"
     android:background="@drawable/bg_item_meal_checked">
 
     <TextView
