@@ -106,5 +106,13 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
         menu.findItem(R.id.menu_delete_time).isVisible = false
     }
 
-    override fun onDialogNegativeClick(dialog: DialogFragment) {}
+    override fun onDialogNegativeClick(dialog: DialogFragment) {
+        for (i in 0 until adapter.itemCount) {
+            val view = binding.recyclerView.getChildAt(i)
+            val checkBox: CheckBox = view.findViewById(R.id.checkBox)
+            checkBox.visibility = View.GONE
+        }
+
+        menu.findItem(R.id.menu_delete_time).isVisible = false
+    }
 }
