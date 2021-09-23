@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">dogTime</string>
-    <string name="btn_register">저장</string>
+    <string name="btn_register">추가</string>
     <string name="radioBtn_meal">식사</string>
     <string name="radioBtn_snack">간식</string>
     <string name="tv_meal_start_time">시작 시간</string>
     <string name="tv_meal_end_time">끝 시간</string>
     <string name="tv_select_time">시간을 선택해주세요</string>
+    <string name="tv_meal_name">보여질 이름</string>
+    <string name="et_meal_hint">이름을 입력해주세요</string>
+    <string name="tv_meal_type">급식 종류</string>
 </resources>
