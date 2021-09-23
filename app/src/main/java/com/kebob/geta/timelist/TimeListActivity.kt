@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kebob.geta.CustomActionBar
 import com.kebob.geta.R
 import com.kebob.geta.RegisterActivity
-import com.kebob.geta.data.Meal
+import com.kebob.geta.data.MealRequest
 import com.kebob.geta.databinding.ActivityTimeListBinding
 
 class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTimeDialogListener {
@@ -29,9 +29,9 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
         setActionBar()
 
         val array = arrayOf(
-            Meal("아침", "9:00", "11:00", "엄마", ""),
-            Meal("점심", "9:00", "11:00", "엄마", ""),
-            Meal("저녁", "9:00", "11:00", "엄마", "")
+            MealRequest("아침", "9:00", "11:00", "엄마", ""),
+            MealRequest("점심", "9:00", "11:00", "엄마", ""),
+            MealRequest("저녁", "9:00", "11:00", "엄마", "")
         )
         adapter = TimeListAdapter(array)
         adapter.setOnMyItemLongClickListener(object: TimeListAdapter.OnItemLongClickListener {

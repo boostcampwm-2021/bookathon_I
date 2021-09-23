@@ -18,7 +18,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.kebob.geta.data.Meal
+import com.kebob.geta.data.MealRequest
 import com.kebob.geta.databinding.ActivityRegisterBinding
 import java.lang.Exception
 import java.text.SimpleDateFormat
@@ -152,7 +152,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun writeNewMeal(mealName: String) {
-        val meal = Meal(
+        val meal = MealRequest(
             mealType.name,
             binding.tvStartTimePicker.text.toString(),
             binding.tvEndTimePicker.text.toString(),

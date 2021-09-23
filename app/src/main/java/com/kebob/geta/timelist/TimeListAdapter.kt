@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kebob.geta.R
-import com.kebob.geta.data.Meal
+import com.kebob.geta.data.MealRequest
 
-class TimeListAdapter(private val dataSet: Array<Meal>)
+class TimeListAdapter(private val dataSet: Array<MealRequest>)
     : RecyclerView.Adapter<TimeListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View, listener: OnItemLongClickListener) : RecyclerView.ViewHolder(view) {
