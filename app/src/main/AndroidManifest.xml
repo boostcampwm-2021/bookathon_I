@@ -34,7 +34,7 @@
         </service>
 
         <activity
-            android:name="com.kebob.geta.ui.timelist.TimeListActivity"
+            android:name=".ui.timelist.TimeListActivity"
             android:exported="true"
             android:theme="@style/Theme.DogTime.NoActionBar" />
         <activity
