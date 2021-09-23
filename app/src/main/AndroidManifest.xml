@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kebob.geta">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +13,9 @@
         <activity
             android:name=".TimeListActivity"
             android:exported="true"
-            android:theme="@style/Theme.DogTime.NoActionBar" />
+            android:theme="@style/Theme.DogTime.NoActionBar">
+
+        </activity>
         <activity
             android:name=".RegisterActivity"
             android:exported="true">

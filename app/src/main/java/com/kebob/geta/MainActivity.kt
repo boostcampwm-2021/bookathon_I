@@ -1,7 +1,10 @@
 package com.kebob.geta
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kebob.geta.databinding.ActivityMainBinding
@@ -25,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setAdapter()
+        setSupportActionBar(binding.tbMain)
+        setActionBar()
 
         mLayoutManager = LinearLayoutManager(this)
         binding.rvMealList.layoutManager = mLayoutManager
@@ -48,5 +53,27 @@ class MainActivity : AppCompatActivity() {
             Meal.CHECKED -> mealList[position].type = Meal.UNCHECKED
             Meal.UNCHECKED -> mealList[position].type = Meal.CHECKED
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_meal_list, menu)
+        return true
+    }
+
+    private fun setActionBar() {
+        supportActionBar?.let {
+            CustomActionBar(this, it).setActionBar()
+            it.title = "개밥타임"
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.btn_tb_settings -> {
+                val intent = Intent(this, TimeListActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

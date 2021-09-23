@@ -9,4 +9,5 @@
     <string name="tv_meal_name">보여질 이름</string>
     <string name="et_meal_hint">이름을 입력해주세요</string>
     <string name="tv_meal_type">급식 종류</string>
+    <string name="btn_setup">설정</string>
 </resources>
