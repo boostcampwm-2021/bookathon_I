@@ -9,13 +9,6 @@ class CustomActionBar(private val activity: Activity, private val actionBar: Act
 
     @SuppressLint("InflateParams")
     fun setActionBar() {
-        actionBar.let {
-            it.setDisplayShowCustomEnabled(true)
-            it.setDisplayHomeAsUpEnabled(false)
-            it.setDisplayShowTitleEnabled(true)
-            it.setDisplayShowHomeEnabled(false)
-        }
-
         val customView = LayoutInflater.from(activity).inflate(R.layout.custom_action_bar, null)
         actionBar.customView = customView
     }
