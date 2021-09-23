@@ -10,4 +10,5 @@
     <color name="item_basic">#F6F6FF</color>
     <color name="item_gray">#dddddd</color>
     <color name="background">#EEEEEE</color>
+    <color name="color_b0b0b0">#b0b0b0</color>
 </resources>
