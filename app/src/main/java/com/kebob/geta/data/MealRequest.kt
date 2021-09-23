@@ -1,6 +1,6 @@
 package com.kebob.geta.data
 
-data class MealData(
+data class MealRequest(
     val mealType: String,
     val startTime: String,
     val endTime: String,

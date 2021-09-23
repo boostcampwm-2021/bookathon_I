@@ -1,9 +1,10 @@
-package com.kebob.geta
+package com.kebob.geta.ui
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.LayoutInflater
 import androidx.appcompat.app.ActionBar
+import com.kebob.geta.R
 
 class CustomActionBar(private val activity: Activity, private val actionBar: ActionBar) {
 

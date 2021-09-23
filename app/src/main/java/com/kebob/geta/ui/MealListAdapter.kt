@@ -1,15 +1,13 @@
-package com.kebob.geta
+package com.kebob.geta.ui
 
-import android.graphics.ColorSpace
-import android.graphics.drawable.shapes.Shape
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.kebob.geta.R
+import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ItemMealBinding
-import java.lang.RuntimeException
 
 class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
     private lateinit var mealList: List<Meal>
@@ -22,10 +20,13 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
             binding.tvMealTitle.text = meal.mealName
             binding.tvMealTime.text = meal.time
             binding.tvMealPerson.text = meal.person
-            // TODO: Glide 사용해서 image도 불러오기
+            Glide.with(itemView.context)
+                .load(R.drawable.sleeping_cat)
+                .circleCrop()
+                .into(binding.ivMealProfile)
 
             binding.layoutItemMeal.setOnClickListener {
-                onItemClickListener.onItemClick(it, position)
+                onItemClickListener.onItemClick(it, adapterPosition)
             }
             when (meal.person) {
                 "" -> {

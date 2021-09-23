@@ -1,74 +1,89 @@
-package com.kebob.geta
+package com.kebob.geta.ui
 
 import android.content.ContentValues.TAG
 import android.content.Intent
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.annotation.RequiresApi
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.kebob.geta.data.MealData
-import com.kebob.geta.databinding.ActivityMainBinding
-import java.lang.Exception
-import android.widget.Toast
 import com.google.firebase.messaging.ktx.messaging
-import com.kebob.geta.timelist.TimeListActivity
+import com.kebob.geta.R
+import com.kebob.geta.Util
+import com.kebob.geta.data.Meal
+import com.kebob.geta.data.MealRequest
+import com.kebob.geta.databinding.ActivityMainBinding
+import com.kebob.geta.ui.timelist.TimeListActivity
 
 class MainActivity : AppCompatActivity() {
-    private var mBinding: ActivityMainBinding? = null
-    private val binding get() = mBinding!!
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var mealListAdapter: MealListAdapter
-    private lateinit var mLayoutManager: LinearLayoutManager
+    private val mealListAdapter: MealListAdapter = MealListAdapter()
 
     private var mealList: MutableList<Meal> = mutableListOf()
+
     private val database = Firebase.database
-    private val ref = database.reference
+    private val databaseReference = database.reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        mBinding = ActivityMainBinding.inflate(layoutInflater)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        mealList = intent.getSerializableExtra("meals") as MutableList<Meal>
-        Util.parseMeal(database){
-            mealListAdapter.updateList(it)
-            mealList = it
-        }
-        setAdapter()
         setSupportActionBar(binding.tbMain)
         setActionBar()
+        setAdapter()
 
-        mLayoutManager = LinearLayoutManager(this)
-        binding.rvMealList.layoutManager = mLayoutManager
+
+        mealList = intent.getSerializableExtra("meals") as MutableList<Meal>
 
         Firebase.messaging.subscribeToTopic("all")
             .addOnCompleteListener { task ->
                 Toast.makeText(baseContext, "환영합니다.", Toast.LENGTH_SHORT).show()
             }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        updateMealList()
     }
 
     private fun setAdapter() {
-        mealListAdapter = MealListAdapter()
         binding.rvMealList.adapter = mealListAdapter
+        binding.rvMealList.layoutManager = LinearLayoutManager(this)
         mealListAdapter.updateList(mealList)
         mealListAdapter.setOnItemClickListener(object : MealListAdapter.OnItemClickListener {
-            @RequiresApi(Build.VERSION_CODES.O)
             override fun onItemClick(view: View, position: Int) {
+                if (position < mealList.size - 1 && mealList[position + 1].person != "") return
+                if (position > 0 && mealList[position - 1].person == "") return
                 updateData(position)
-                Util.parseMeal(database) {
-                    mealListAdapter.updateList(it)
-                    mealList = it
-                }
+                updateMealList()
             }
         })
+    }
+
+    private fun updateMealList() {
+        Util.parseMeal(database) {
+            mealListAdapter.updateList(it)
+            mealList = it
+            showEmptyResult(it.isEmpty())
+        }
+    }
+
+    private fun showEmptyResult(isEmpty: Boolean) {
+        binding.layoutNoAlarm.visibility = View.GONE
+        if (isEmpty) {
+            binding.layoutNoAlarm.visibility = View.VISIBLE
+            Glide.with(this)
+                .load(R.drawable.ic_waiting_dog)
+                .into(binding.imgNoData)
+        }
     }
 
     private fun updateData(position: Int) {
@@ -91,7 +106,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun writeNewMeal(newMeal: Meal) {
-        val mealData = MealData(
+        val mealData = MealRequest(
             newMeal.mealType,
             newMeal.startTime,
             newMeal.endTime,
@@ -99,7 +114,9 @@ class MainActivity : AppCompatActivity() {
             newMeal.time
         )
         try {
-            ref.child("meals").child(newMeal.mealName).setValue(mealData)
+            databaseReference.child("meals")
+                .child(newMeal.mealName)
+                .setValue(mealData)
         } catch (e: Exception) {
             Log.e(TAG, e.toString())
         }

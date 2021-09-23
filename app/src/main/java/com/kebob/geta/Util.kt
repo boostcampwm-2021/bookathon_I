@@ -1,12 +1,9 @@
 package com.kebob.geta
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
-import org.threeten.bp.LocalDateTime
+import com.kebob.geta.data.Meal
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 object Util {
