@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
+import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -36,19 +37,17 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.tbRegister)
+        setActionBar()
         initListener()
     }
 
     private fun initListener() {
         with(binding) {
-            imgClose.setOnClickListener {
-                Log.d(TAG, "imgClose Clicked")
-                finish()
-            }
-
             btnRegister.setOnClickListener {
                 if (this@RegisterActivity::mealType.isInitialized &&
                     this@RegisterActivity::mealName.isInitialized &&
+                    !mealName.equals("") &&
                     !tvStartTimePicker.text.equals("시간을 선택해주세요") &&
                     !tvEndTimePicker.text.equals("시간을 선택해주세요")
                 )
@@ -116,6 +115,24 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    private fun setActionBar() {
+        supportActionBar?.let {
+            CustomActionBar(this, it).setActionBar()
+        }
+
+        supportActionBar?.let {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.title = "등록"
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun setTime(view: TextView) {
         val currentTime = Calendar.getInstance()
         val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
@@ -143,7 +160,7 @@ class RegisterActivity : AppCompatActivity() {
             ""
         )
         try {
-            database.child(mealName).setValue(meal)
+            database.child("meals").child(mealName).setValue(meal)
             finish()
         } catch (e: Exception) {
             Log.e(TAG, e.toString())
