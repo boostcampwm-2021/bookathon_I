@@ -1,18 +1,23 @@
 package com.kebob.geta
 
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.messaging.ktx.messaging
 import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.kebob.geta.data.MealData
 import com.kebob.geta.databinding.ActivityMainBinding
+import java.lang.Exception
+import android.widget.Toast
+import com.google.firebase.messaging.ktx.messaging
 import com.kebob.geta.timelist.TimeListActivity
 
 class MainActivity : AppCompatActivity() {
@@ -22,8 +27,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mealListAdapter: MealListAdapter
     private lateinit var mLayoutManager: LinearLayoutManager
 
-    private var mealList : MutableList<Meal> = mutableListOf()
+    private var mealList: MutableList<Meal> = mutableListOf()
     private val database = Firebase.database
+    private val ref = database.reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,20 +60,50 @@ class MainActivity : AppCompatActivity() {
         binding.rvMealList.adapter = mealListAdapter
         mealListAdapter.updateList(mealList)
         mealListAdapter.setOnItemClickListener(object : MealListAdapter.OnItemClickListener {
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun onItemClick(view: View, position: Int) {
-                // Firebase data 수정하기
-//                updateData(position)
-                mealListAdapter.updateList(mealList)
+                updateData(position)
+                Util.parseMeal(database) {
+                    mealListAdapter.updateList(it)
+                    mealList = it
+                }
             }
         })
     }
 
-//    private fun updateData(position: Int) {
-//        when (mealList[position].type) {
-//            Meal.CHECKED -> mealList[position].type = Meal.UNCHECKED
-//            Meal.UNCHECKED -> mealList[position].type = Meal.CHECKED
-//        }
-//    }
+    private fun updateData(position: Int) {
+        when (mealList[position].person) {
+            "" -> {
+                mealList[position].apply {
+                    person = "형님"
+                    time = Util.getCurrentTime()
+                    Log.d("time", time.toString())
+                }
+            }
+            else -> {
+                mealList[position].apply {
+                    person = ""
+                    time = ""
+                }
+            }
+        }
+        writeNewMeal(mealList[position])
+    }
+
+    private fun writeNewMeal(newMeal: Meal) {
+        val mealData = MealData(
+            newMeal.mealType,
+            newMeal.startTime,
+            newMeal.endTime,
+            newMeal.person,
+            newMeal.time
+        )
+        try {
+            ref.child("meals").child(newMeal.mealName).setValue(mealData)
+        } catch (e: Exception) {
+            Log.e(TAG, e.toString())
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_meal_list, menu)

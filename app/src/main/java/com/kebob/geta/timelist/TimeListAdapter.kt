@@ -11,7 +11,6 @@ import com.kebob.geta.Meal
 
 class TimeListAdapter(var dataSet: List<Meal>)
     : RecyclerView.Adapter<TimeListAdapter.ViewHolder>() {
-
     class ViewHolder(view: View, listener: OnItemLongClickListener) : RecyclerView.ViewHolder(view) {
         val tvMeal: TextView = view.findViewById(R.id.tv_meal)
         val tvTime: TextView = view.findViewById(R.id.tv_time_range)
