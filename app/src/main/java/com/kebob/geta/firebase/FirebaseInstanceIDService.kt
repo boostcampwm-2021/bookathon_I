@@ -62,7 +62,7 @@ internal class FirebaseInstanceIDService : FirebaseMessagingService() {
         notifyChannel.createNotificationChannel(channelMessage)
 
         val notificationBuilder = NotificationCompat.Builder(this, channel)
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setSmallIcon(R.drawable.ic_pet)
             .setContentTitle(title)
             .setContentText(message)
             .setChannelId(channel)
