@@ -81,8 +81,8 @@ class MainActivity : AppCompatActivity() {
         mealListAdapter.updateList(mealList)
         mealListAdapter.setOnItemClickListener(object : MealListAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-//                if (position < mealList.size - 1 && mealList[position + 1].person != "") return
-//                if (position > 0 && mealList[position - 1].person == "") return
+                if (position < mealList.size - 1 && mealList[position + 1].person != "") return
+                if (position > 0 && mealList[position - 1].person == "") return
                 updateData(position)
                 updateMealList()
             }
@@ -120,9 +120,8 @@ class MainActivity : AppCompatActivity() {
                 binding.lottieHome.playAnimation()
 
                 mealList[position].apply {
-                    person = "엄마"
+                    person = userName
                     time = Util.getCurrentTime()
-                    Log.d("time", time.toString())
                 }
             }
             else -> {
