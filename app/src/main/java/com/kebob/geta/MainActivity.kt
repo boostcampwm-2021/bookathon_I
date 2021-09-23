@@ -11,12 +11,14 @@ import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.kebob.geta.data.MealData
 import com.kebob.geta.databinding.ActivityMainBinding
 import java.lang.Exception
+import android.widget.Toast
+import com.google.firebase.messaging.ktx.messaging
+import com.kebob.geta.timelist.TimeListActivity
 
 class MainActivity : AppCompatActivity() {
     private var mBinding: ActivityMainBinding? = null
@@ -44,6 +46,12 @@ class MainActivity : AppCompatActivity() {
 
         mLayoutManager = LinearLayoutManager(this)
         binding.rvMealList.layoutManager = mLayoutManager
+
+        Firebase.messaging.subscribeToTopic("all")
+            .addOnCompleteListener { task ->
+                Toast.makeText(baseContext, "환영합니다.", Toast.LENGTH_SHORT).show()
+            }
+
     }
 
     private fun setAdapter() {
