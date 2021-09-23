@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mealList = intent.getSerializableExtra("meals") as MutableList<Meal>
-        Util.parseMeal(database){
+        Util.parseMeal(database) {
             mealListAdapter.updateList(it)
             mealList = it
         }
@@ -62,6 +62,8 @@ class MainActivity : AppCompatActivity() {
         mealListAdapter.setOnItemClickListener(object : MealListAdapter.OnItemClickListener {
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onItemClick(view: View, position: Int) {
+                if (position < mealList.size - 1 && mealList[position + 1].person != "") return
+                if (position > 0 && mealList[position - 1].person == "") return
                 updateData(position)
                 Util.parseMeal(database) {
                     mealListAdapter.updateList(it)
