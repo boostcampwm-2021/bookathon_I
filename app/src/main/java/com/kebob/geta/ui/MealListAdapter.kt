@@ -8,6 +8,8 @@ import com.bumptech.glide.Glide
 import com.kebob.geta.R
 import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ItemMealBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
     private lateinit var mealList: List<Meal>
@@ -28,20 +30,41 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
             binding.layoutItemMeal.setOnClickListener {
                 onItemClickListener.onItemClick(it, adapterPosition)
             }
+
+            var completeString = ""
             when (meal.person) {
                 "" -> {
                     binding.layoutItemMeal.setBackgroundResource(R.drawable.bg_item_meal_unchecked)
                     binding.tvMealPerson.visibility = View.GONE
-                    binding.tvMealTime.visibility = View.GONE
                     binding.ivMealProfile.visibility = View.GONE
+                    binding.tvMealTime.visibility = View.GONE
+                    binding.tvMealNoneTime.visibility = View.VISIBLE
+                    val format = SimpleDateFormat("HH:mm")
+                    val currentTime = Date(System.currentTimeMillis())
+                    val distanceTime = format.parse(meal.endTime)
+
+                    binding.tvMealNoneTime.text = if (distanceTime.hours > currentTime.hours) {
+                        val hour = distanceTime.hours - currentTime.hours
+                        "${hour}시간 전"
+                    } else {
+                        "배식시간 지남"
+                    }
                 }
                 else -> {
                     binding.layoutItemMeal.setBackgroundResource(R.drawable.bg_item_meal_checked)
                     binding.tvMealPerson.visibility = View.VISIBLE
                     binding.tvMealTime.visibility = View.VISIBLE
                     binding.ivMealProfile.visibility = View.VISIBLE
+                    binding.tvMealNoneTime.visibility = View.GONE
+                    completeString = itemView.context.getString(R.string.common_complete)
                     // binding.tvMealDay.visibility = View.VISIBLE
                 }
+            }
+
+            binding.textView2.text = when (meal.mealType) {
+                RegisterActivity.MealType.Meal.name -> itemView.context.getString(R.string.common_meal) + completeString
+                RegisterActivity.MealType.Snack.name -> itemView.context.getString(R.string.common_snack) + completeString
+                else -> ""
             }
         }
     }
