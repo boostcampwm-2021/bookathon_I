@@ -59,8 +59,6 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
         fabAdd.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
-
-        readRegisteredTime()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -83,6 +81,11 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         this.menu = menu?: return false
         return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        readRegisteredTime()
     }
 
     private fun setActionBar() {

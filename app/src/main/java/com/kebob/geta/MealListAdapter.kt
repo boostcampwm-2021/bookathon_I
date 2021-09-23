@@ -32,7 +32,6 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
                     binding.layoutItemMeal.setBackgroundResource(R.drawable.bg_item_meal_unchecked)
                     binding.tvMealPerson.visibility = View.GONE
                     binding.tvMealTime.visibility = View.GONE
-                    binding.tvMealDay.visibility = View.GONE
                     binding.ivMealProfile.visibility = View.GONE
                 }
                 else -> {
