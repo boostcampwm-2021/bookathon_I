@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DogTime">
         <activity
+            android:name=".TimeListActivity"
+            android:exported="true"
+            android:label="@string/title_activity_time_list"
+            android:theme="@style/Theme.DogTime.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
