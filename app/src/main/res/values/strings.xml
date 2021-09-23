@@ -11,4 +11,7 @@
     <string name="et_meal_hint">이름을 입력해주세요</string>
     <string name="tv_meal_type">급식 종류</string>
     <string name="btn_setup">설정</string>
+    <string name="dialog_delete_time">삭제하시겠습니까?</string>
+    <string name="yes">예</string>
+    <string name="no">아니오</string>
 </resources>

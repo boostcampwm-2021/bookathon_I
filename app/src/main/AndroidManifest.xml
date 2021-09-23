@@ -23,9 +23,7 @@
         <activity
             android:name=".TimeListActivity"
             android:exported="true"
-            android:theme="@style/Theme.DogTime.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.DogTime.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true">
