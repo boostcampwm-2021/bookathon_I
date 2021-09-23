@@ -18,6 +18,12 @@
         <entry key="..\:/gitfolderd/bookathon_I/app/src/main/res/layout/item_meal_list.xml" value="0.33" />
         <entry key="..\:/gitfolderd/bookathon_I/app/src/main/res/layout/item_registered_meal_list.xml" value="0.33" />
         <entry key="..\:/gitfolderd/bookathon_I/app/src/main/res/menu/menu.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_add.xml" value="0.1382882882882883" />
+        <entry key="app/src/main/res/drawable/splash_image.xml" value="0.54375" />
+        <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.1382882882882883" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.14375" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.11216216216216217" />
+        <entry key="app/src/main/res/layout/activity_user_register.xml" value="0.1296875" />
       </map>
     </option>
   </component>

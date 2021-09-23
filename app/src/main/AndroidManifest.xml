@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kebob.geta">
+    package="com.kebob.geta" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,10 +10,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DogTime">
+        android:theme="@style/Theme.DogTime" >
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UserRegisterActivity"
+            android:exported="true" />
+
         <service
-            android:name="com.kebob.geta.firebase.FirebaseInstanceIDService"
-            android:stopWithTask="false">
+            android:name=".firebase.FirebaseInstanceIDService"
+            android:stopWithTask="false" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -23,22 +36,14 @@
         <activity
             android:name=".TimeListActivity"
             android:exported="true"
-            android:theme="@style/Theme.DogTime.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.DogTime.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
