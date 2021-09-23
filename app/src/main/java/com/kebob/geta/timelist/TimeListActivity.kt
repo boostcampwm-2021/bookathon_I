@@ -29,11 +29,7 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
         setSupportActionBar(binding.toolbar)
         setActionBar()
 
-        val list = listOf(
-            Meal("아침", "식사", "9:00", "11:00", "엄마", "", null),
-            Meal("점심", "식사", "9:00", "11:00", "엄마", "", null),
-            Meal("저녁", "식사", "9:00", "11:00", "엄마", "", null)
-        )
+        val list = listOf<Meal>()
         adapter = TimeListAdapter(list)
         adapter.setOnMyItemLongClickListener(object: TimeListAdapter.OnItemLongClickListener {
             override fun onItemLongClick(view: View, position: Int) {
