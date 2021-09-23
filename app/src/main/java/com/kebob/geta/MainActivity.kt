@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Util.parseMeal(database) {
+        mealList = intent.getSerializableExtra("meals") as MutableList<Meal>
+        Util.parseMeal(database){
             mealListAdapter.updateList(it)
             mealList = it
         }
