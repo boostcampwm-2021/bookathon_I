@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kebob.geta.R
 import com.kebob.geta.Meal
 
-class TimeListAdapter(private var dataSet: List<Meal>)
+class TimeListAdapter(var dataSet: List<Meal>)
     : RecyclerView.Adapter<TimeListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View, listener: OnItemLongClickListener) : RecyclerView.ViewHolder(view) {
@@ -43,7 +43,7 @@ class TimeListAdapter(private var dataSet: List<Meal>)
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvMeal.text = dataSet[position].mealType
+        holder.tvMeal.text = dataSet[position].mealName
         holder.tvTime.text = "${dataSet[position].startTime} ~ ${dataSet[position].endTime}"
     }
 

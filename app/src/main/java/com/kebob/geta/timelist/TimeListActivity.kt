@@ -11,11 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.kebob.geta.CustomActionBar
-import com.kebob.geta.R
-import com.kebob.geta.RegisterActivity
-import com.kebob.geta.Util
-import com.kebob.geta.Meal
+import com.kebob.geta.*
 import com.kebob.geta.databinding.ActivityTimeListBinding
 
 class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTimeDialogListener {
@@ -103,10 +99,12 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
     }
 
     override fun onDialogPositiveClick(dialog: DialogFragment) {
-        // TODO: item 삭제
         for (i in 0 until adapter.itemCount) {
             val view = binding.recyclerView.getChildAt(i)
             val checkBox: CheckBox = view.findViewById(R.id.checkBox)
+            if (checkBox.isChecked) {
+                deleteRegisteredTime(adapter.dataSet[i].mealName)
+            }
             checkBox.visibility = View.GONE
         }
 
@@ -129,7 +127,11 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
         }
     }
 
-    private fun deleteTime() {
-
+    private fun deleteRegisteredTime(meal: String) {
+        try {
+            database.reference.child("meals").child(meal).removeValue()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }
