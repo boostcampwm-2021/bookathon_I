@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.tbMain)
         setActionBar()
         setAdapter()
-
+        setUserMap()
 
         binding.lottieHome.setAnimation("paricle.json")
         binding.lottieHome.addAnimatorListener(object : Animator.AnimatorListener {
@@ -53,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             override fun onAnimationCancel(animation: Animator?) {}
             override fun onAnimationRepeat(animation: Animator?) {}
         })
-
 
         mealList = intent.getSerializableExtra("meals") as MutableList<Meal>
 
@@ -74,8 +74,8 @@ class MainActivity : AppCompatActivity() {
         mealListAdapter.updateList(mealList)
         mealListAdapter.setOnItemClickListener(object : MealListAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                if (position < mealList.size - 1 && mealList[position + 1].person != "") return
-                if (position > 0 && mealList[position - 1].person == "") return
+//                if (position < mealList.size - 1 && mealList[position + 1].person != "") return
+//                if (position > 0 && mealList[position - 1].person == "") return
                 updateData(position)
                 updateMealList()
             }
@@ -87,6 +87,12 @@ class MainActivity : AppCompatActivity() {
             mealListAdapter.updateList(it)
             mealList = it
             showEmptyResult(it.isEmpty())
+        }
+    }
+
+    private fun setUserMap() {
+        Util.getUserMap(database) {
+            mealListAdapter.updateUserMap(it)
         }
     }
 
@@ -107,7 +113,7 @@ class MainActivity : AppCompatActivity() {
                 binding.lottieHome.playAnimation()
 
                 mealList[position].apply {
-                    person = "형님"
+                    person = "엄마"
                     time = Util.getCurrentTime()
                     Log.d("time", time.toString())
                 }

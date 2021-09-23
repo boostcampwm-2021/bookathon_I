@@ -1,11 +1,13 @@
 package com.kebob.geta.ui
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kebob.geta.R
+import com.kebob.geta.Util
 import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ItemMealBinding
 import java.text.SimpleDateFormat
@@ -13,6 +15,7 @@ import java.util.*
 
 class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
     private lateinit var mealList: List<Meal>
+    private lateinit var userMap: Map<String, String>
     private lateinit var onItemClickListener: OnItemClickListener
 
     inner class MealViewHolder(private val binding: ItemMealBinding) :
@@ -23,7 +26,7 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
             binding.tvMealTime.text = meal.time
             binding.tvMealPerson.text = meal.person
             Glide.with(itemView.context)
-                .load(R.drawable.sleeping_cat)
+                .load(userMap[meal.person])
                 .circleCrop()
                 .into(binding.ivMealProfile)
 
@@ -57,7 +60,6 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
                     binding.ivMealProfile.visibility = View.VISIBLE
                     binding.tvMealNoneTime.visibility = View.GONE
                     completeString = itemView.context.getString(R.string.common_complete)
-                    // binding.tvMealDay.visibility = View.VISIBLE
                 }
             }
 
@@ -87,6 +89,10 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
     fun updateList(newData: List<Meal>) {
         mealList = newData
         notifyDataSetChanged()
+    }
+
+    fun updateUserMap(newData: Map<String, String>) {
+        userMap = newData
     }
 
     interface OnItemClickListener {
