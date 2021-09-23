@@ -16,4 +16,7 @@
     <string name="no">아니오</string>
     <string name="time">시간</string>
     <string name="meal_add_caption">알람을 등록해보세요!</string>
+    <string name="common_meal">🍖 식사</string>
+    <string name="common_snack">🥫 간식</string>
+    <string name="common_complete">완료!</string>
 </resources>

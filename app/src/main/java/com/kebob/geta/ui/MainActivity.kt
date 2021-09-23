@@ -1,5 +1,6 @@
 package com.kebob.geta.ui
 
+import android.animation.Animator
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -21,6 +22,7 @@ import com.kebob.geta.data.MealRequest
 import com.kebob.geta.databinding.ActivityMainBinding
 import com.kebob.geta.ui.timelist.TimeListActivity
 
+
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
@@ -39,6 +41,18 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.tbMain)
         setActionBar()
         setAdapter()
+
+
+        binding.lottieHome.setAnimation("paricle.json")
+        binding.lottieHome.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {}
+            override fun onAnimationEnd(animation: Animator?) {
+                binding.lottieHome.visibility = View.GONE
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {}
+            override fun onAnimationRepeat(animation: Animator?) {}
+        })
 
 
         mealList = intent.getSerializableExtra("meals") as MutableList<Meal>
@@ -89,6 +103,9 @@ class MainActivity : AppCompatActivity() {
     private fun updateData(position: Int) {
         when (mealList[position].person) {
             "" -> {
+                binding.lottieHome.visibility = View.VISIBLE
+                binding.lottieHome.playAnimation()
+
                 mealList[position].apply {
                     person = "형님"
                     time = Util.getCurrentTime()

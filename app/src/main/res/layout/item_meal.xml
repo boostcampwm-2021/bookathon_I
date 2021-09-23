@@ -8,8 +8,8 @@
     <ImageView
         android:id="@+id/iv_meal_profile"
         android:layout_width="32dp"
+        android:layout_marginEnd="4dp"
         android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
         android:background="@drawable/bg_item_meal_icon"
         android:src="@drawable/sleeping_cat"
         app:layout_constraintBottom_toBottomOf="@+id/tv_meal_person"
@@ -18,12 +18,13 @@
 
     <TextView
         android:id="@+id/tv_meal_person"
-        android:layout_width="56dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
         android:text="엄마"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_meal_time" />
@@ -32,22 +33,45 @@
         android:id="@+id/tv_meal_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:text="13:00"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_meal_person"
         app:layout_constraintStart_toStartOf="@+id/iv_meal_profile"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
+        android:id="@+id/tv_meal_none_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_meal_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
         android:id="@+id/tv_meal_title"
         style="@style/meal_item_title"
+        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="아침" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tv_meal_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_meal_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
