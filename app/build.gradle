@@ -7,6 +7,10 @@ plugins {
 android {
     compileSdk 30
 
+    viewBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.kebob.geta"
         minSdk 21

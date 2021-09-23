@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DogTime">
         <activity
+            android:name=".RegisterActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
