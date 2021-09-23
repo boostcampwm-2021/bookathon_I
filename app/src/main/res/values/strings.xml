@@ -19,4 +19,5 @@
     <string name="common_meal">🍖 식사</string>
     <string name="common_snack">🥫 간식</string>
     <string name="common_complete">완료!</string>
+    <string name="alarm_time">알림시간</string>
 </resources>
