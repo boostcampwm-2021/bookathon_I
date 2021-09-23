@@ -1,17 +1,17 @@
-package com.kebob.geta
+package com.kebob.geta.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.kebob.geta.databinding.ActivityUserRegisterBinding
 
 class UserRegisterActivity : AppCompatActivity() {
-    private var mBinding: ActivityUserRegisterBinding? = null
-    private val binding get() = mBinding!!
+    private var _binding: ActivityUserRegisterBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivityUserRegisterBinding.inflate(layoutInflater)
+        _binding = ActivityUserRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
+
     }
 }

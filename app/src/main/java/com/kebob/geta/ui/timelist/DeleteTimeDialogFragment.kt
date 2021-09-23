@@ -1,4 +1,4 @@
-package com.kebob.geta.timelist
+package com.kebob.geta.ui.timelist
 
 import android.app.AlertDialog
 import android.app.Dialog

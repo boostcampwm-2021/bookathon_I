@@ -1,4 +1,4 @@
-package com.kebob.geta.timelist
+package com.kebob.geta.ui.timelist
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,12 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.kebob.geta.*
+import com.kebob.geta.R
+import com.kebob.geta.Util
+import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ActivityTimeListBinding
+import com.kebob.geta.ui.CustomActionBar
+import com.kebob.geta.ui.RegisterActivity
 
 class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTimeDialogListener {
     private lateinit var binding: ActivityTimeListBinding
@@ -31,7 +35,7 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
 
         val list = listOf<Meal>()
         adapter = TimeListAdapter(list)
-        adapter.setOnMyItemLongClickListener(object: TimeListAdapter.OnItemLongClickListener {
+        adapter.setOnMyItemLongClickListener(object : TimeListAdapter.OnItemLongClickListener {
             override fun onItemLongClick(view: View, position: Int) {
                 val delete: MenuItem = menu.findItem(R.id.menu_delete_time)
                 delete.isVisible = true
@@ -75,7 +79,7 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        this.menu = menu?: return false
+        this.menu = menu ?: return false
         return super.onPrepareOptionsMenu(menu)
     }
 
@@ -106,7 +110,7 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
             }
             checkBox.visibility = View.GONE
         }
-
+        readRegisteredTime()
         menu.findItem(R.id.menu_delete_time).isVisible = false
     }
 
@@ -121,7 +125,7 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
     }
 
     private fun readRegisteredTime() {
-        Util.parseMeal(database){
+        Util.parseMeal(database) {
             adapter.updateDataSet(it.toList())
         }
     }

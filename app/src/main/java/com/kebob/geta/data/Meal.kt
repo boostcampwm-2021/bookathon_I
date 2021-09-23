@@ -1,4 +1,4 @@
-package com.kebob.geta
+package com.kebob.geta.data
 
 import android.graphics.Bitmap
 import java.io.Serializable
@@ -11,4 +11,4 @@ data class Meal(
     var person: String?,
     var time: String?,
     val profile: Bitmap?
-): Serializable
+) : Serializable
