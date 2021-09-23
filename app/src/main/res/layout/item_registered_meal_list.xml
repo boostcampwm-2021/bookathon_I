@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="132dp"
+    android:layout_height="128dp"
     android:background="@color/white"
     android:layout_marginTop="8dp">
 
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
