@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">dogTime</string>
+    <string name="app_name">개밥타임</string>
     <string name="btn_register">등록</string>
     <string name="radioBtn_meal">식사</string>
     <string name="radioBtn_snack">간식</string>
