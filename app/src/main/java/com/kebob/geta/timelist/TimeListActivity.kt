@@ -129,6 +129,7 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
     private fun deleteRegisteredTime(meal: String) {
         try {
             database.reference.child("meals").child(meal).removeValue()
+            onResume()
         } catch (e: Exception) {
             e.printStackTrace()
         }
