@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "431773616505",
+    "project_id": "bookathon-group-i",
+    "storage_bucket": "bookathon-group-i.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431773616505:android:775cf6a382e2585a8dc7a8",
+        "android_client_info": {
+          "package_name": "com.kebob.geta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431773616505-vb0k81e9dvusfrl9qbljav3c8cpen9k9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kebob.geta",
+            "certificate_hash": "d9c19c89ce93f7a061451e16fccaf68278feb8c8"
+          }
+        },
+        {
+          "client_id": "431773616505-09unamitnrttahsae5opt13odp0jsogi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXQicHLNf_wklNdAkVu9g_dkWloSPVIOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431773616505-09unamitnrttahsae5opt13odp0jsogi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
