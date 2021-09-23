@@ -2,8 +2,12 @@ package com.kebob.geta
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import com.kebob.geta.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +32,12 @@ class MainActivity : AppCompatActivity() {
 
         mLayoutManager = LinearLayoutManager(this)
         binding.rvMealList.layoutManager = mLayoutManager
+
+        Firebase.messaging.subscribeToTopic("all")
+            .addOnCompleteListener { task ->
+                Toast.makeText(baseContext, "환영합니다.", Toast.LENGTH_SHORT).show()
+            }
+
     }
 
     private fun setAdapter() {
