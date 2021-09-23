@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kebob.geta.R
-import com.kebob.geta.data.Meal
+import com.kebob.geta.Meal
 
-class TimeListAdapter(private val dataSet: Array<Meal>)
+class TimeListAdapter(private var dataSet: List<Meal>)
     : RecyclerView.Adapter<TimeListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View, listener: OnItemLongClickListener) : RecyclerView.ViewHolder(view) {
@@ -51,5 +51,11 @@ class TimeListAdapter(private val dataSet: Array<Meal>)
 
     fun setOnMyItemLongClickListener(listener: OnItemLongClickListener) {
         this.onItemLongClickListener = listener
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateDataSet(newData: List<Meal>) {
+        dataSet = newData
+        notifyDataSetChanged()
     }
 }
