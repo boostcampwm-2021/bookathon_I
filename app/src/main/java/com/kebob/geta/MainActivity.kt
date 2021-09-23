@@ -7,6 +7,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.kebob.geta.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,17 +18,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mealListAdapter: MealListAdapter
     private lateinit var mLayoutManager: LinearLayoutManager
 
-    private var mealList = mutableListOf(
-        Meal(Meal.CHECKED, "아침", "엄마", "Mon 13:00", null),
-        Meal(Meal.UNCHECKED, "저녁", "아들1", "Mon 18:00", null)
-    )
+    private var mealList : MutableList<Meal> = mutableListOf()
+    private val database = Firebase.database
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        Util.parseMeal(database){
+            mealListAdapter.updateList(it)
+            mealList = it
+        }
         setAdapter()
         setSupportActionBar(binding.tbMain)
         setActionBar()
@@ -42,18 +45,18 @@ class MainActivity : AppCompatActivity() {
         mealListAdapter.setOnItemClickListener(object : MealListAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 // Firebase data 수정하기
-                updateData(position)
+//                updateData(position)
                 mealListAdapter.updateList(mealList)
             }
         })
     }
 
-    private fun updateData(position: Int) {
-        when (mealList[position].type) {
-            Meal.CHECKED -> mealList[position].type = Meal.UNCHECKED
-            Meal.UNCHECKED -> mealList[position].type = Meal.CHECKED
-        }
-    }
+//    private fun updateData(position: Int) {
+//        when (mealList[position].type) {
+//            Meal.CHECKED -> mealList[position].type = Meal.UNCHECKED
+//            Meal.UNCHECKED -> mealList[position].type = Meal.CHECKED
+//        }
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_meal_list, menu)
