@@ -14,4 +14,5 @@
     <string name="dialog_delete_time">삭제하시겠습니까?</string>
     <string name="yes">예</string>
     <string name="no">아니오</string>
+    <string name="time">시간</string>
 </resources>

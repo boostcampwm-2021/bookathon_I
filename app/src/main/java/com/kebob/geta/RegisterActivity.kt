@@ -118,9 +118,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun setActionBar() {
         supportActionBar?.let {
             CustomActionBar(this, it).setActionBar()
-        }
-
-        supportActionBar?.let {
+            it.setHomeAsUpIndicator(R.drawable.ic_close)
             it.setDisplayHomeAsUpEnabled(true)
             it.title = "등록"
         }
