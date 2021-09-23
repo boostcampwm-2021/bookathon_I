@@ -3,8 +3,6 @@ package com.kebob.geta.ui
 import android.app.TimePickerDialog
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
 import android.view.MenuItem
@@ -12,10 +10,10 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.kebob.geta.R
@@ -44,12 +42,17 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun initListener() {
         with(binding) {
+            lottieRegister.setAnimation("gooddog.json")
+            lottieRegister.loop(true)
+            lottieRegister.scale = 0.5f
+            lottieRegister.playAnimation()
+
             btnRegister.setOnClickListener {
                 if (this@RegisterActivity::mealType.isInitialized &&
                     this@RegisterActivity::mealName.isInitialized &&
                     !mealName.equals("") &&
-                    !tvStartTimePicker.text.equals("시간을 선택해주세요") &&
-                    !tvEndTimePicker.text.equals("시간을 선택해주세요")
+                    !tvStartTimePicker.text.equals(getString(R.string.tv_select_time)) &&
+                    !tvEndTimePicker.text.equals(getString(R.string.tv_select_time))
                 )
                     writeNewMeal(mealName)
                 else {
@@ -69,18 +72,10 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d(TAG, "mealType : ${mealType.name}")
             }
 
-            etMealName.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                }
-
-                override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
-                    mealName = p0.toString()
-                    Log.d(TAG, "mealName: $mealName")
-                }
-            })
+            etMealName.addTextChangedListener {
+                mealName = it.toString()
+                Log.d(TAG, "mealName: $mealName")
+            }
 
             etMealName.setOnEditorActionListener(object : TextView.OnEditorActionListener {
                 override fun onEditorAction(
