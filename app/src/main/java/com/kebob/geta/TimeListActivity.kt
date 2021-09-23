@@ -20,7 +20,6 @@ class TimeListActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         setActionBar()
 
-
         val array = arrayOf(
             Meal("아침", "9:00", "11:00", "엄마", ""),
             Meal("점심", "9:00", "11:00", "엄마", ""),
@@ -53,9 +52,6 @@ class TimeListActivity : AppCompatActivity() {
     private fun setActionBar() {
         supportActionBar?.let {
             CustomActionBar(this, it).setActionBar()
-        }
-
-        supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
             it.title = "급식 시간 관리"
         }
