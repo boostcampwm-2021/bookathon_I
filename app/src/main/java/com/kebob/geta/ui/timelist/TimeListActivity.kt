@@ -1,4 +1,4 @@
-package com.kebob.geta.timelist
+package com.kebob.geta.ui.timelist
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,12 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.kebob.geta.*
+import com.kebob.geta.R
+import com.kebob.geta.Util
+import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ActivityTimeListBinding
+import com.kebob.geta.ui.CustomActionBar
+import com.kebob.geta.ui.RegisterActivity
 
 class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTimeDialogListener {
     private lateinit var binding: ActivityTimeListBinding
@@ -59,8 +63,6 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
         fabAdd.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
-
-        readRegisteredTime()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -85,6 +87,11 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
         return super.onPrepareOptionsMenu(menu)
     }
 
+    override fun onResume() {
+        super.onResume()
+        readRegisteredTime()
+    }
+
     private fun setActionBar() {
         supportActionBar?.let {
             CustomActionBar(this, it).setActionBar()
@@ -107,7 +114,7 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
             }
             checkBox.visibility = View.GONE
         }
-
+        readRegisteredTime()
         menu.findItem(R.id.menu_delete_time).isVisible = false
     }
 

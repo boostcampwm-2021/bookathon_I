@@ -1,4 +1,4 @@
-package com.kebob.geta.timelist
+package com.kebob.geta.ui.timelist
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.kebob.geta.data.Meal
 import com.kebob.geta.R
-import com.kebob.geta.Meal
 
-class TimeListAdapter(var dataSet: List<Meal>)
-    : RecyclerView.Adapter<TimeListAdapter.ViewHolder>() {
-
+class TimeListAdapter(var dataSet: List<Meal>) : RecyclerView.Adapter<TimeListAdapter.ViewHolder>() {
     class ViewHolder(view: View, listener: OnItemLongClickListener) : RecyclerView.ViewHolder(view) {
         val tvMeal: TextView = view.findViewById(R.id.tv_meal)
         val tvTime: TextView = view.findViewById(R.id.tv_time_range)
