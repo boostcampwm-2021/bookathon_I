@@ -12,7 +12,6 @@
         <activity
             android:name=".TimeListActivity"
             android:exported="true"
-            android:label="@string/title_activity_time_list"
             android:theme="@style/Theme.DogTime.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
