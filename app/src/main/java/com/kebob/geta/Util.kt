@@ -12,8 +12,8 @@ import java.util.*
 object Util {
     fun parseMeal(database: FirebaseDatabase, onSuccessListener: (MutableList<Meal>) -> Unit) {
         val ref = database.reference
-        var meals = mutableListOf<DataSnapshot>()
-        var r = mutableListOf<Meal>()
+        val meals = mutableListOf<DataSnapshot>()
+        val mealList = mutableListOf<Meal>()
         ref.child("meals").get().addOnSuccessListener { m ->
             m.children.forEach {
                 meals.add(it)
@@ -33,9 +33,10 @@ object Util {
                     else if (i == 3) startTime = it.value.toString()
                     else if (i == 4) time = it.value.toString()
                 }
-                r.add(Meal(title, mealType, startTime, endTime, person, time, null))
+                mealList.add(Meal(title, mealType, startTime, endTime, person, time, null))
             }
-            onSuccessListener.invoke(r)
+            mealList.sortBy { it.startTime }
+            onSuccessListener.invoke(mealList)
         }
     }
 
