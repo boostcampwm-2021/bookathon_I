@@ -6,17 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".UserRegisterActivity">
 
-    <ImageView
-        android:id="@+id/iv_user"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+    <RadioGroup
+        android:id="@+id/rg_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:src="@drawable/ic_baseline_person_24"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/et_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rb_dad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@drawable/ic_dad" />
+
+        <RadioButton
+            android:id="@+id/rb_mom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@drawable/ic_mom" />
+
+        <RadioButton
+            android:id="@+id/rb_son"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@drawable/ic_boy" />
+
+        <RadioButton
+            android:id="@+id/rb_daughter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@drawable/ic_girl" />
+    </RadioGroup>
+
+
 
     <EditText
         android:id="@+id/et_user"
@@ -25,15 +55,17 @@
         android:layout_margin="32dp"
         android:hint="@string/et_meal_hint"
         android:imeOptions="actionDone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@id/btn_register_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_user" />
+        app:layout_constraintTop_toBottomOf="@id/rg_parent" />
+
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_register_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/btn_register"
-        />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

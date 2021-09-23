@@ -22,7 +22,8 @@
         </activity>
         <activity
             android:name=".UserRegisterActivity"
-            android:exported="true" />
+            android:exported="true">
+        </activity>
 
         <service
             android:name=".firebase.FirebaseInstanceIDService"
