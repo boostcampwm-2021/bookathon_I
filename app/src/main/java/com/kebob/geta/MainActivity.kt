@@ -13,6 +13,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
 import com.google.firebase.database.ktx.database
 import com.kebob.geta.databinding.ActivityMainBinding
+import com.kebob.geta.timelist.TimeListActivity
 
 class MainActivity : AppCompatActivity() {
     private var mBinding: ActivityMainBinding? = null
