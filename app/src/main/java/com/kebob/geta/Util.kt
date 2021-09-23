@@ -37,6 +37,26 @@ object Util {
         }
     }
 
+    fun getUserMap(
+        database: FirebaseDatabase,
+        onSuccessListener: (MutableMap<String, String>) -> Unit
+    ) {
+        val ref = database.reference
+        val users = mutableListOf<DataSnapshot>()
+        val userMap = mutableMapOf<String, String>()
+        ref.child("users").get().addOnSuccessListener { userData ->
+            userData.children.forEach {
+                users.add(it)
+            }
+            users.forEach { user ->
+                val person = user.key.toString()
+                val profile = user.value.toString()
+                userMap[person] = profile
+            }
+            onSuccessListener.invoke(userMap)
+        }
+    }
+
     fun getCurrentTime(): String {
         val dateFormat = SimpleDateFormat("HH:mm")
         val today = Calendar.getInstance().time
