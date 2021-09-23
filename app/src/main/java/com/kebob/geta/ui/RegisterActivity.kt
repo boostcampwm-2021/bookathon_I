@@ -1,8 +1,7 @@
-package com.kebob.geta
+package com.kebob.geta.ui
 
 import android.app.TimePickerDialog
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,11 +15,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.kebob.geta.data.MealData
+import com.kebob.geta.R
+import com.kebob.geta.data.MealRequest
 import com.kebob.geta.databinding.ActivityRegisterBinding
-import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -53,24 +53,21 @@ class RegisterActivity : AppCompatActivity() {
                 )
                     writeNewMeal(mealName)
                 else {
-
                     Toast.makeText(applicationContext, "필수 항목을 선택해주세요", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            rgType.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
-                override fun onCheckedChanged(p0: RadioGroup?, id: Int) {
-                    when (id) {
-                        R.id.rb_meal -> {
-                            mealType = MealType.Meal
-                        }
-                        R.id.rb_snack -> {
-                            mealType = MealType.Snack
-                        }
+            rgType.setOnCheckedChangeListener { p0, id ->
+                when (id) {
+                    R.id.rb_meal -> {
+                        mealType = MealType.Meal
                     }
-                    Log.d(TAG, "mealType : ${mealType.name}")
+                    R.id.rb_snack -> {
+                        mealType = MealType.Snack
+                    }
                 }
-            })
+                Log.d(TAG, "mealType : ${mealType.name}")
+            }
 
             etMealName.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -92,12 +89,12 @@ class RegisterActivity : AppCompatActivity() {
                     keyEvent: KeyEvent?
                 ): Boolean {
                     if (keyEvent != null) {
-                        if (((keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER))
+                        if (((keyEvent.keyCode == KeyEvent.KEYCODE_ENTER))
                             || (actionId == EditorInfo.IME_ACTION_DONE)
                         ) {
                             val imm =
                                 applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                            imm.hideSoftInputFromWindow(etMealName.getWindowToken(), 0)
+                            imm.hideSoftInputFromWindow(etMealName.windowToken, 0)
                             return true
                         }
                     }
@@ -152,7 +149,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun writeNewMeal(mealName: String) {
-        val meal = MealData(
+        val meal = MealRequest(
             mealType.name,
             binding.tvStartTimePicker.text.toString(),
             binding.tvEndTimePicker.text.toString(),
@@ -184,4 +181,5 @@ class RegisterActivity : AppCompatActivity() {
         Meal,
         Snack
     }
+
 }
