@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kebob.geta.CustomActionBar
 import com.kebob.geta.R
@@ -14,7 +15,7 @@ import com.kebob.geta.RegisterActivity
 import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ActivityTimeListBinding
 
-class TimeListActivity : AppCompatActivity() {
+class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTimeDialogListener {
     private lateinit var binding: ActivityTimeListBinding
     private lateinit var adapter: TimeListAdapter
     private lateinit var menu: Menu
@@ -65,14 +66,7 @@ class TimeListActivity : AppCompatActivity() {
                 onBackPressed()
             }
             R.id.menu_delete_time -> {
-                // TODO: item 삭제
-                for (i in 0 until adapter.itemCount) {
-                    val view = binding.recyclerView.getChildAt(i)
-                    val checkBox: CheckBox = view.findViewById(R.id.checkBox)
-                    checkBox.visibility = View.GONE
-                }
-
-                item.isVisible = false
+                showConfirmDialog()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -95,4 +89,22 @@ class TimeListActivity : AppCompatActivity() {
             it.title = "급식 시간 관리"
         }
     }
+
+    private fun showConfirmDialog() {
+        val dialog = DeleteTimeDialogFragment()
+        dialog.show(supportFragmentManager, "DeleteTimeDialogFragment")
+    }
+
+    override fun onDialogPositiveClick(dialog: DialogFragment) {
+        // TODO: item 삭제
+        for (i in 0 until adapter.itemCount) {
+            val view = binding.recyclerView.getChildAt(i)
+            val checkBox: CheckBox = view.findViewById(R.id.checkBox)
+            checkBox.visibility = View.GONE
+        }
+
+        menu.findItem(R.id.menu_delete_time).isVisible = false
+    }
+
+    override fun onDialogNegativeClick(dialog: DialogFragment) {}
 }

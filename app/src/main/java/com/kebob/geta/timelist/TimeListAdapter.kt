@@ -32,7 +32,7 @@ class TimeListAdapter(private val dataSet: Array<Meal>)
         fun onItemLongClick(view: View, position: Int)
     }
 
-    lateinit var onItemLongClickListener: OnItemLongClickListener
+    private lateinit var onItemLongClickListener: OnItemLongClickListener
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
