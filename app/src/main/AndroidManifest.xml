@@ -34,14 +34,14 @@
         </service>
 
         <activity
-            android:name=".timelist.TimeListActivity"
+            android:name=".ui.timelist.TimeListActivity"
             android:exported="true"
             android:theme="@style/Theme.DogTime.NoActionBar" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true" >
 
         </activity>
