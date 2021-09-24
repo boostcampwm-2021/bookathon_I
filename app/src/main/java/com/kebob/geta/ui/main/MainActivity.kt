@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
@@ -25,7 +24,6 @@ import com.kebob.geta.data.MealRequest
 import com.kebob.geta.databinding.ActivityMainBinding
 import com.kebob.geta.ui.CustomActionBar
 import com.kebob.geta.ui.UserRegisterActivity
-import com.kebob.geta.ui.timelist.DeleteTimeDialogFragment
 import com.kebob.geta.ui.timelist.TimeListActivity
 
 
@@ -72,7 +70,7 @@ class MainActivity : AppCompatActivity(), CheckMealDialogFragment.CheckMealDialo
 
         Firebase.messaging.subscribeToTopic("all")
             .addOnCompleteListener { task ->
-                Toast.makeText(baseContext, "환영합니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, "오늘도 개밥타임", Toast.LENGTH_SHORT).show()
             }
     }
 
