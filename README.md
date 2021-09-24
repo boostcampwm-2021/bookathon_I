@@ -55,7 +55,8 @@
 
 
 - 접속  
-https://user-images.githubusercontent.com/62787596/134624132-44f4eecb-4c85-4393-bc34-cc41beb4ea48.mov
+https://user-images.githubusercontent.com/39328846/134625107-c7444733-19cc-4e5b-ae44-ec41fa0eec1a.mp4
+
 
 - 삭제  
 https://user-images.githubusercontent.com/62787596/134624167-1b167747-401e-4202-a278-eb1f0e24a062.mov
