@@ -1,15 +1,14 @@
-package com.kebob.geta.ui
+package com.kebob.geta.ui.main
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kebob.geta.R
-import com.kebob.geta.Util
 import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ItemMealBinding
+import com.kebob.geta.ui.RegisterActivity
 import java.text.SimpleDateFormat
 import java.util.*
 

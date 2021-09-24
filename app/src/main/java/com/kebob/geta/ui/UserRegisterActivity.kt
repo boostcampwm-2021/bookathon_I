@@ -3,8 +3,6 @@ package com.kebob.geta.ui
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -23,7 +21,7 @@ import com.google.firebase.ktx.Firebase
 import com.kebob.geta.R
 import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ActivityUserRegisterBinding
-import com.kebob.geta.ui.MainActivity
+import com.kebob.geta.ui.main.MainActivity
 import java.lang.Exception
 
 class UserRegisterActivity : AppCompatActivity() {
