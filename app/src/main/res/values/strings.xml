@@ -22,4 +22,5 @@
     <string name="common_medicine">💊 약</string>
     <string name="common_complete">완료!</string>
     <string name="alarm_time">알림시간</string>
+    <string name="user_register">프로필을 선택해주세요</string>
 </resources>
