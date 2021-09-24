@@ -9,6 +9,7 @@ import com.google.firebase.ktx.Firebase
 import com.kebob.geta.Util
 import com.kebob.geta.data.Meal
 import com.kebob.geta.databinding.ActivitySplashBinding
+import com.kebob.geta.ui.main.MainActivity
 import kotlin.properties.Delegates
 
 class SplashActivity : AppCompatActivity() {
@@ -46,7 +47,6 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-
         }
     }
 }

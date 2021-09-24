@@ -41,7 +41,7 @@
             android:name=".ui.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true" >
 
         </activity>

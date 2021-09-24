@@ -1,4 +1,4 @@
-package com.kebob.geta.ui
+package com.kebob.geta.ui.main
 
 import android.animation.Animator
 import android.content.ContentValues.TAG
@@ -9,11 +9,12 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.ktx.messaging
@@ -22,10 +23,13 @@ import com.kebob.geta.Util
 import com.kebob.geta.data.Meal
 import com.kebob.geta.data.MealRequest
 import com.kebob.geta.databinding.ActivityMainBinding
+import com.kebob.geta.ui.CustomActionBar
+import com.kebob.geta.ui.UserRegisterActivity
+import com.kebob.geta.ui.timelist.DeleteTimeDialogFragment
 import com.kebob.geta.ui.timelist.TimeListActivity
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CheckMealDialogFragment.CheckMealDialogListener {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
@@ -37,7 +41,9 @@ class MainActivity : AppCompatActivity() {
     private val databaseReference = database.reference
 
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var userName : String
+    private lateinit var userName: String
+
+    private var position: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         sharedPreferences = getSharedPreferences(UserRegisterActivity.login, MODE_PRIVATE)
-        userName = sharedPreferences.getString(UserRegisterActivity.userN,"default").toString()
+        userName = sharedPreferences.getString(UserRegisterActivity.userN, "default").toString()
 
         mealList = intent.getSerializableExtra("meals") as MutableList<Meal>
 
@@ -83,8 +89,7 @@ class MainActivity : AppCompatActivity() {
             override fun onItemClick(view: View, position: Int) {
                 if (position < mealList.size - 1 && mealList[position + 1].person != "") return
                 if (position > 0 && mealList[position - 1].person == "") return
-                updateData(position)
-                updateMealList()
+                showConfirmDialog(position)
             }
         })
     }
@@ -171,5 +176,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showConfirmDialog(pos: Int) {
+        position = pos
+        val dialog = CheckMealDialogFragment()
+        dialog.show(supportFragmentManager, "CheckMealDialogFragment")
+    }
+
+    override fun onDialogPositiveClick(dialog: DialogFragment) {
+        updateData(position)
+        updateMealList()
+    }
+
+    override fun onDialogNegativeClick(dialog: DialogFragment) {
     }
 }
