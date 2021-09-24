@@ -45,9 +45,13 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
                     val currentTime = Date(System.currentTimeMillis())
                     val distanceTime = format.parse(meal.endTime)
 
-                    binding.tvMealNoneTime.text = if (distanceTime.hours > currentTime.hours) {
-                        val hour = distanceTime.hours - currentTime.hours
-                        "${hour}시간 전"
+                    val currentMin = currentTime.hours * 60 + currentTime.minutes
+                    val distanceMin = distanceTime.hours * 60 + distanceTime.minutes
+
+                    binding.tvMealNoneTime.text = if (distanceMin > currentMin) {
+                        val hour = distanceMin - currentMin
+                        if (hour < 60) "${hour}분 전"
+                        else "${hour / 60}시간 전"
                     } else {
                         "알람시간 지남\n~${meal.endTime}"
                     }
