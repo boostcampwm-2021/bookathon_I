@@ -92,6 +92,14 @@
             android:text="@string/common_snack"
             android:textSize="16sp" />
 
+        <RadioButton
+            android:id="@+id/rb_medicine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/common_medicine"
+            android:textSize="16sp" />
+
     </RadioGroup>
 
     <View

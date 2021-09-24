@@ -66,6 +66,7 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
             binding.textView2.text = when (meal.mealType) {
                 RegisterActivity.MealType.Meal.name -> itemView.context.getString(R.string.common_meal) + completeString
                 RegisterActivity.MealType.Snack.name -> itemView.context.getString(R.string.common_snack) + completeString
+                RegisterActivity.MealType.Medicine.name -> itemView.context.getString(R.string.common_medicine) + completeString
                 else -> ""
             }
         }

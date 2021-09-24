@@ -68,6 +68,9 @@ class RegisterActivity : AppCompatActivity() {
                     R.id.rb_snack -> {
                         mealType = MealType.Snack
                     }
+                    R.id.rb_medicine -> {
+                        mealType = MealType.Medicine
+                    }
                 }
                 Log.d(TAG, "mealType : ${mealType.name}")
             }
@@ -172,6 +175,7 @@ class RegisterActivity : AppCompatActivity() {
 
     enum class MealType {
         Meal,
-        Snack
+        Snack,
+        Medicine;
     }
 }
