@@ -39,6 +39,9 @@ class UserRegisterActivity : AppCompatActivity() {
 
     private lateinit var mealList : MutableList<Meal>
 
+    private var isChecking = true
+    private var checkedId = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityUserRegisterBinding.inflate(layoutInflater)
@@ -53,24 +56,24 @@ class UserRegisterActivity : AppCompatActivity() {
         with(binding) {
             rgParent.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
                 override fun onCheckedChanged(p0: RadioGroup?, id: Int) {
-                    when (id) {
-                        R.id.rb_dad -> {
-                            userUrl =
-                                "https://user-images.githubusercontent.com/62787596/134565130-35203932-93e7-4285-8d9e-faf0742ca394.png"
-                        }
-                        R.id.rb_mom -> {
-                            userUrl =
-                                "https://user-images.githubusercontent.com/62787596/134565134-3706a519-4c05-443e-bc4b-69ac74b911fe.png"
-                        }
-                        R.id.rb_son -> {
-                            userUrl =
-                                "https://user-images.githubusercontent.com/62787596/134565138-889d240c-6c9c-4e74-aadf-7bf12411a912.png"
-                        }
-                        R.id.rb_daughter -> {
-                            userUrl =
-                                "https://user-images.githubusercontent.com/62787596/134565145-53eccba2-28de-4242-907e-4064a310c4d3.png"
-                        }
+                    if (id != -1 && isChecking){
+                        isChecking = false
+                        rgChild.clearCheck()
+                        checkedId = id
                     }
+                    isChecking = true
+                    setUrl(checkedId)
+                }
+            })
+            rgChild.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
+                override fun onCheckedChanged(p0: RadioGroup?, id: Int) {
+                    if (id != -1 && isChecking){
+                        isChecking = false
+                        rgParent.clearCheck()
+                        checkedId = id
+                    }
+                    isChecking = true
+                    setUrl(checkedId)
                 }
             })
 
@@ -123,6 +126,27 @@ class UserRegisterActivity : AppCompatActivity() {
                 }
                 else
                     Toast.makeText(applicationContext, "필수 항목 선택해주세요", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun setUrl(id: Int){
+        when(id) {
+            R.id.rb_dad -> {
+                userUrl =
+                    "https://user-images.githubusercontent.com/62787596/134565130-35203932-93e7-4285-8d9e-faf0742ca394.png"
+            }
+            R.id.rb_mom -> {
+                userUrl =
+                    "https://user-images.githubusercontent.com/62787596/134565134-3706a519-4c05-443e-bc4b-69ac74b911fe.png"
+            }
+            R.id.rb_son -> {
+                userUrl =
+                    "https://user-images.githubusercontent.com/62787596/134565138-889d240c-6c9c-4e74-aadf-7bf12411a912.png"
+            }
+            R.id.rb_daughter -> {
+                userUrl =
+                    "https://user-images.githubusercontent.com/62787596/134565145-53eccba2-28de-4242-907e-4064a310c4d3.png"
             }
         }
     }
