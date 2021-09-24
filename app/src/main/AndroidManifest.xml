@@ -13,7 +13,8 @@
         android:theme="@style/Theme.DogTime" >
         <activity
             android:name=".ui.SplashActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +23,8 @@
         </activity>
         <activity
             android:name=".ui.UserRegisterActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
 
         <service
             android:name=".firebase.FirebaseInstanceIDService"
@@ -36,13 +38,16 @@
         <activity
             android:name=".ui.timelist.TimeListActivity"
             android:exported="true"
-            android:theme="@style/Theme.DogTime.NoActionBar" />
+            android:theme="@style/Theme.DogTime.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.RegisterActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:screenOrientation="portrait">
 
         </activity>
     </application>

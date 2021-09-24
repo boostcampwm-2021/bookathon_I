@@ -35,7 +35,7 @@ internal class FirebaseInstanceIDService : FirebaseMessagingService() {
 
     private fun onNotifyLegacy(title: String?, message: String?) {
         val notificationBuilder = NotificationCompat.Builder(this, "")
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setSmallIcon(R.drawable.ic_pet)
             .setContentTitle(title)
             .setContentText(message)
             .setAutoCancel(true)

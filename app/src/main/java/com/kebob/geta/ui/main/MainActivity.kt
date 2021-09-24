@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(), CheckMealDialogFragment.CheckMealDialo
 
         Firebase.messaging.subscribeToTopic("all")
             .addOnCompleteListener { task ->
-                Toast.makeText(baseContext, "환영합니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(baseContext, "오늘도 개밥타임", Toast.LENGTH_SHORT).show()
             }
     }
 
