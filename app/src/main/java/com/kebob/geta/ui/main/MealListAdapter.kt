@@ -49,7 +49,7 @@ class MealListAdapter : RecyclerView.Adapter<MealListAdapter.MealViewHolder>() {
                         val hour = distanceTime.hours - currentTime.hours
                         "${hour}시간 전"
                     } else {
-                        "배식시간 지남"
+                        "알람시간 지남\n~${meal.endTime}"
                     }
                 }
                 else -> {

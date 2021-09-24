@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity(), CheckMealDialogFragment.CheckMealDialo
     private fun setActionBar() {
         supportActionBar?.let {
             CustomActionBar(this, it).setActionBar()
-            it.title = "개밥타임"
+            it.title = ""
         }
     }
 
@@ -178,8 +178,10 @@ class MainActivity : AppCompatActivity(), CheckMealDialogFragment.CheckMealDialo
 
     private fun showConfirmDialog(pos: Int) {
         position = pos
-        val dialog = CheckMealDialogFragment()
-        dialog.show(supportFragmentManager, "CheckMealDialogFragment")
+        mealList[pos]?.let {
+            val dialog = CheckMealDialogFragment(it)
+            dialog.show(supportFragmentManager, "CheckMealDialogFragment")
+        }
     }
 
     override fun onDialogPositiveClick(dialog: DialogFragment) {

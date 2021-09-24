@@ -6,9 +6,9 @@ import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.kebob.geta.R
-import com.kebob.geta.ui.timelist.DeleteTimeDialogFragment
+import com.kebob.geta.data.Meal
 
-class CheckMealDialogFragment : DialogFragment() {
+class CheckMealDialogFragment(val meal: Meal) : DialogFragment() {
     private lateinit var listener: CheckMealDialogFragment.CheckMealDialogListener
 
     interface CheckMealDialogListener {
@@ -18,8 +18,18 @@ class CheckMealDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
+            var message = when (meal.mealType) {
+                "Meal" -> getString(R.string.common_meal_surve)
+                "Snack" -> getString(R.string.common_snack_surve)
+                "Medicine" -> getString(R.string.common_medicine_surve)
+                else -> getString(R.string.meal_complete)
+            }
+            if (meal.person?.isNotBlank() == true) {
+                message = getString(R.string.meal_cancle)
+            }
+
             val builder = AlertDialog.Builder(it)
-            builder.setMessage(R.string.dialog_check_meal)
+            builder.setMessage(message)
                 .setPositiveButton(R.string.yes) { dialog, id ->
                     listener.onDialogPositiveClick(this)
                 }
