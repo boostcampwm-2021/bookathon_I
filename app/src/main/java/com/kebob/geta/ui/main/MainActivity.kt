@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
@@ -25,7 +24,6 @@ import com.kebob.geta.data.MealRequest
 import com.kebob.geta.databinding.ActivityMainBinding
 import com.kebob.geta.ui.CustomActionBar
 import com.kebob.geta.ui.UserRegisterActivity
-import com.kebob.geta.ui.timelist.DeleteTimeDialogFragment
 import com.kebob.geta.ui.timelist.TimeListActivity
 
 
@@ -180,8 +178,10 @@ class MainActivity : AppCompatActivity(), CheckMealDialogFragment.CheckMealDialo
 
     private fun showConfirmDialog(pos: Int) {
         position = pos
-        val dialog = CheckMealDialogFragment()
-        dialog.show(supportFragmentManager, "CheckMealDialogFragment")
+        mealList[pos]?.let {
+            val dialog = CheckMealDialogFragment(it)
+            dialog.show(supportFragmentManager, "CheckMealDialogFragment")
+        }
     }
 
     override fun onDialogPositiveClick(dialog: DialogFragment) {

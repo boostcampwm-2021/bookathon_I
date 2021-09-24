@@ -22,4 +22,9 @@
     <string name="common_medicine">💊 약</string>
     <string name="common_complete">완료!</string>
     <string name="alarm_time">알림시간</string>
+    <string name="common_meal_surve">식사를 주셨나요?!</string>
+    <string name="common_snack_surve">간식을 주셨나요?!</string>
+    <string name="common_medicine_surve">약을 주셨나요?!</string>
+    <string name="meal_cancle">취소 할까요?</string>
+    <string name="meal_complete">완료 하셨나요?</string>
 </resources>
