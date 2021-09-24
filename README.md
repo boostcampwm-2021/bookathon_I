@@ -54,17 +54,17 @@
 ### 🎨 시연 영상
 
 
-- 접속
+- 접속  
 https://user-images.githubusercontent.com/62787596/134624132-44f4eecb-4c85-4393-bc34-cc41beb4ea48.mov
 
-- 삭제
+- 삭제  
 https://user-images.githubusercontent.com/62787596/134624167-1b167747-401e-4202-a278-eb1f0e24a062.mov
 
-- 식사 추가
+- 식사 추가  
 https://user-images.githubusercontent.com/62787596/134624318-61ab84d1-efcc-42d3-9460-5d111e112238.mov
 
-- 식사 지급
+- 식사 지급  
 https://user-images.githubusercontent.com/62787596/134624340-bd2b8128-fcfa-40dd-8104-b0293c291c6e.mov
 
-- 식사 지급 알림 
+- 식사 지급 알림  
 https://user-images.githubusercontent.com/62787596/134624389-1b03d343-4730-4ea9-a322-0135590a2875.mov
