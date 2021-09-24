@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         android:text="@string/alarm_time"
         app:layout_constraintBottom_toTopOf="@+id/tv_time_range"
-        app:layout_constraintEnd_toEndOf="@+id/tv_time_range"
         app:layout_constraintStart_toStartOf="@+id/tv_time_range"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
