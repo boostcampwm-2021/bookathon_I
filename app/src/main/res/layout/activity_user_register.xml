@@ -19,7 +19,7 @@
 
     <RadioGroup
         android:id="@+id/rg_parent"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
@@ -42,13 +42,12 @@
             android:id="@+id/rb_mom"
             android:layout_width="170dp"
             android:layout_height="170dp"
-            android:layout_weight="0.5"
             android:background="@drawable/background_mom" />
     </RadioGroup>
 
     <RadioGroup
         android:id="@+id/rg_child"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
@@ -63,7 +62,6 @@
             android:id="@+id/rb_son"
             android:layout_width="170dp"
             android:layout_height="170dp"
-            android:layout_weight="0.5"
             android:background="@drawable/background_son" />
 
         <RadioButton
@@ -71,7 +69,6 @@
             android:id="@+id/rb_daughter"
             android:layout_width="170dp"
             android:layout_height="170dp"
-            android:layout_weight="0.5"
             android:background="@drawable/background_girl" />
     </RadioGroup>
 
