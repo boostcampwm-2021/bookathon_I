@@ -5,7 +5,7 @@
     <string name="radioBtn_snack">간식</string>
     <string name="tv_meal_start_time">시작 시간</string>
     <string name="tv_meal_end_time">끝 시간</string>
-    <string name="tv_select_time">👉여기를 눌러 시간을 선택해주세요</string>
+    <string name="tv_select_time">👉 여기를 눌러 시간을 선택해주세요</string>
     <string name="delete">삭제</string>
     <string name="tv_meal_name">알람 이름</string>
     <string name="et_meal_hint">이름을 입력해주세요</string>
