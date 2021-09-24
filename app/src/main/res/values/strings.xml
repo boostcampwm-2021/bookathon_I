@@ -19,6 +19,7 @@
     <string name="meal_add_caption">알람을 등록해보세요!</string>
     <string name="common_meal">🍖 식사</string>
     <string name="common_snack">🥫 간식</string>
+    <string name="common_medicine">💊 약</string>
     <string name="common_complete">완료!</string>
     <string name="alarm_time">알림시간</string>
 </resources>

@@ -80,11 +80,13 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         this.menu = menu ?: return false
+        this.menu.findItem(R.id.menu_delete_time).isVisible = false
         return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onResume() {
         super.onResume()
+        hideCheckbox()
         readRegisteredTime()
     }
 
@@ -115,13 +117,7 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
     }
 
     override fun onDialogNegativeClick(dialog: DialogFragment) {
-        for (i in 0 until adapter.itemCount) {
-            val view = binding.recyclerView.getChildAt(i)
-            val checkBox: CheckBox = view.findViewById(R.id.checkBox)
-            checkBox.visibility = View.GONE
-        }
-
-        menu.findItem(R.id.menu_delete_time).isVisible = false
+        hideCheckbox()
     }
 
     private fun readRegisteredTime() {
@@ -136,6 +132,15 @@ class TimeListActivity : AppCompatActivity(), DeleteTimeDialogFragment.DeleteTim
             onResume()
         } catch (e: Exception) {
             e.printStackTrace()
+        }
+    }
+
+    private fun hideCheckbox() {
+        for (i in 0 until adapter.itemCount) {
+            val view = binding.recyclerView.getChildAt(i)
+            val checkBox: CheckBox = view.findViewById(R.id.checkBox)
+            checkBox.isChecked = false
+            checkBox.visibility = View.GONE
         }
     }
 }

@@ -34,6 +34,7 @@ class TimeListAdapter(var dataSet: List<Meal>) : RecyclerView.Adapter<TimeListAd
             binding.textView2.text = when (meal.mealType) {
                 RegisterActivity.MealType.Meal.name -> itemView.context.getString(R.string.common_meal)
                 RegisterActivity.MealType.Snack.name -> itemView.context.getString(R.string.common_snack)
+                RegisterActivity.MealType.Medicine.name -> itemView.context.getString(R.string.common_medicine)
                 else -> ""
             }
         }

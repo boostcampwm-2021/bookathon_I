@@ -20,18 +20,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
+            android:button="@null"
             android:id="@+id/rb_dad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/ic_dad" />
+            android:background="@drawable/background_dad" />
 
         <RadioButton
+            android:button="@null"
             android:id="@+id/rb_mom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/ic_mom" />
+            android:background="@drawable/background_mom" />
     </RadioGroup>
 
     <RadioGroup
@@ -48,18 +50,20 @@
         app:layout_constraintTop_toBottomOf="@id/rg_parent">
 
         <RadioButton
+            android:button="@null"
             android:id="@+id/rb_son"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/ic_boy" />
+            android:background="@drawable/background_son" />
 
         <RadioButton
+            android:button="@null"
             android:id="@+id/rb_daughter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/ic_girl" />
+            android:background="@drawable/background_girl" />
     </RadioGroup>
 
     <EditText
