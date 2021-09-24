@@ -18,6 +18,12 @@ class CheckMealDialogFragment(val meal: Meal) : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
+            var icon = when (meal.mealType) {
+                "Meal" -> getString(R.string.common_meal)
+                "Snack" -> getString(R.string.common_snack)
+                "Medicine" -> getString(R.string.common_medicine)
+                else -> ""
+            }
             var message = when (meal.mealType) {
                 "Meal" -> getString(R.string.common_meal_surve)
                 "Snack" -> getString(R.string.common_snack_surve)
@@ -30,6 +36,7 @@ class CheckMealDialogFragment(val meal: Meal) : DialogFragment() {
 
             val builder = AlertDialog.Builder(it)
             builder.setMessage(message)
+                .setTitle(icon)
                 .setPositiveButton(R.string.yes) { dialog, id ->
                     listener.onDialogPositiveClick(this)
                 }
