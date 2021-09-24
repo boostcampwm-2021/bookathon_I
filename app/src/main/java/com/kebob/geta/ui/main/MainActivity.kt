@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity(), CheckMealDialogFragment.CheckMealDialo
     private fun setActionBar() {
         supportActionBar?.let {
             CustomActionBar(this, it).setActionBar()
-            it.title = "개밥타임"
+            it.title = ""
         }
     }
 
