@@ -55,16 +55,21 @@
 
 
 - 접속  
+
 https://user-images.githubusercontent.com/39328846/134625107-c7444733-19cc-4e5b-ae44-ec41fa0eec1a.mp4
 
 - 삭제  
+
 https://user-images.githubusercontent.com/39328846/134625481-041ce536-2ffa-498f-895a-3b71e6a00108.mp4
 
 - 식사 추가  
+
 https://user-images.githubusercontent.com/39328846/134625522-8b1aaeca-c02f-40c7-9893-99e97c37e818.mp4
 
 - 식사 지급  
+
 https://user-images.githubusercontent.com/39328846/134625536-e45d95c5-8e55-461e-a7a7-bf91df655af5.mp4
 
 - 식사 지급 알림  
+
 https://user-images.githubusercontent.com/39328846/134625504-10b8d471-1ffa-4bca-975f-3b2410d409dd.mp4
